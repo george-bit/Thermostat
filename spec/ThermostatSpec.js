@@ -70,7 +70,7 @@ describe('Thermostat', function() {
     for (var i = 0; i < 3; i++) {
       thermostat.DownTemp();
     }
-    expect(thermostat.Usage()).toEqual('Low - usage');
+    expect(thermostat.Usage()).toEqual('Low - Usage');
   });
 
 
@@ -80,17 +80,17 @@ describe('Thermostat', function() {
     for (var i = 0; i < 4; i++) {
       thermostat.UpTemp();
     }
-    expect(thermostat.Usage()).toEqual('Medium - usage');
+    expect(thermostat.Usage()).toEqual('Medium - Usage');
   });
 
 
-  it('low usage', function() {
+  it('High usage', function() {
     thermostat.turnPSMOff();
 
     for (var i = 0; i < 7; i++) {
       thermostat.UpTemp();
     }
-    expect(thermostat.Usage()).toEqual('High - usage');
+    expect(thermostat.Usage()).toEqual('High - Usage');
   });
 
 

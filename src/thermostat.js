@@ -1,5 +1,5 @@
 class Thermostat{
-    
+
 
     constructor() {
         this.LOW_USAGE = 18;
@@ -45,10 +45,10 @@ class Thermostat{
     Usage(){
 
         if(this.temperature < this.LOW_USAGE){
-            return 'Low - usage';
+            return 'Low - Usage';
         }
         if(this.temperature >= this.LOW_USAGE && this.temperature <= this.MAXIMUM_TEMPERATURE_PSM_ON)      {
-            return 'Medium - usage';
+            return 'Medium - Usage';
         }
         return 'High - Usage';
 
@@ -75,4 +75,3 @@ class Thermostat{
 
 
 }
-
