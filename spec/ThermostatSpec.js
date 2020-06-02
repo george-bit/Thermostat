@@ -38,6 +38,7 @@ describe('Thermostat', function() {
 
   it('has a maximum of 32 degrees - PSM Off', function() {
     thermostat.turnPSMOff();
+
     for (var i = 0; i < 13; i++) {
       thermostat.UpTemp();
     }
@@ -57,4 +58,41 @@ describe('Thermostat', function() {
     thermostat.turnPSMOn();
     expect(thermostat.isPowerSavingModeOn()).toEqual(true);
   })
+
+  it('reset everything to default', function() {
+    thermostat.reset();
+    expect(thermostat.GetCurrentTemp()).toEqual(20);
+  })
+
+  it('low usage', function() {
+    thermostat.turnPSMOff();
+
+    for (var i = 0; i < 3; i++) {
+      thermostat.DownTemp();
+    }
+    expect(thermostat.Usage()).toEqual('Low - usage');
+  });
+
+
+  it('medimum usage', function() {
+    thermostat.turnPSMOff();
+
+    for (var i = 0; i < 4; i++) {
+      thermostat.UpTemp();
+    }
+    expect(thermostat.Usage()).toEqual('Medium - usage');
+  });
+
+
+  it('low usage', function() {
+    thermostat.turnPSMOff();
+
+    for (var i = 0; i < 7; i++) {
+      thermostat.UpTemp();
+    }
+    expect(thermostat.Usage()).toEqual('High - usage');
+  });
+
+
+
 });
