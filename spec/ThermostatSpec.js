@@ -29,4 +29,32 @@ describe('Thermostat', function() {
     expect(thermostat.GetCurrentTemp()).toEqual(10);
   });
 
+  it('has a maximum of 25 degrees - PSM On', function() {
+    for (var i = 0; i < 6; i++) {
+      thermostat.UpTemp();
+    }
+    expect(thermostat.GetCurrentTemp()).toEqual(25);
+  });
+
+  it('has a maximum of 32 degrees - PSM Off', function() {
+    thermostat.turnPSMOff();
+    for (var i = 0; i < 13; i++) {
+      thermostat.UpTemp();
+    }
+    expect(thermostat.GetCurrentTemp()).toEqual(32);
+  });
+
+  it('has default powersaving mode', function() {
+    expect(thermostat.isPowerSavingModeOn()).toEqual(true);
+  })
+
+  it('can turn powersaving mode off', function() {
+    thermostat.turnPSMOff();
+    expect(thermostat.isPowerSavingModeOn()).toEqual(false);
+  })
+  it('can turn powersaving mode on', function() {
+    thermostat.turnPSMOff();
+    thermostat.turnPSMOn();
+    expect(thermostat.isPowerSavingModeOn()).toEqual(true);
+  })
 });
