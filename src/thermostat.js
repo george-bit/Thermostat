@@ -50,7 +50,7 @@ class Thermostat{
         if(this.temperature < this.LOW_USAGE_LIMIT){
             return 'Low - Usage';
         }
-        if(this.temperature >= this.LOW_USAGE && this.temperature <= this.MAXIMUM_TEMPERATURE_PSM_ON){
+        if(this.temperature >= this.LOW_USAGE_LIMIT && this.temperature <= this.MAXIMUM_TEMPERATURE_PSM_ON){
             return 'Medium - Usage';
         }
         return 'High - Usage';

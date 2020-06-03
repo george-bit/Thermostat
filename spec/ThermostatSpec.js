@@ -9,40 +9,40 @@ describe('Thermostat', function() {
   });
 
   it('return current temp  20', function() {
-    expect(thermostat.GetCurrentTemp()).toEqual(20);
+    expect(thermostat.getCurrentTemp()).toEqual(20);
   });
 
   it('Up', function() {
-    thermostat.UpTemp();
-    expect(thermostat.GetCurrentTemp()).toEqual(21);
+    thermostat.upTemp();
+    expect(thermostat.getCurrentTemp()).toEqual(21);
   });
 
   it('down', function() {
-    thermostat.DownTemp();
-    expect(thermostat.GetCurrentTemp()).toEqual(19);
+    thermostat.downTemp();
+    expect(thermostat.getCurrentTemp()).toEqual(19);
   });
 
   it('has a minimum of 10 degrees', function() {
     for (var i = 0; i < 11; i++) {
-      thermostat.DownTemp();
+      thermostat.downTemp();
     }
-    expect(thermostat.GetCurrentTemp()).toEqual(10);
+    expect(thermostat.getCurrentTemp()).toEqual(10);
   });
 
   it('has a maximum of 25 degrees - PSM On', function() {
     for (var i = 0; i < 6; i++) {
-      thermostat.UpTemp();
+      thermostat.upTemp();
     }
-    expect(thermostat.GetCurrentTemp()).toEqual(25);
+    expect(thermostat.getCurrentTemp()).toEqual(25);
   });
 
   it('has a maximum of 32 degrees - PSM Off', function() {
     thermostat.turnPSMOff();
 
     for (var i = 0; i < 13; i++) {
-      thermostat.UpTemp();
+      thermostat.upTemp();
     }
-    expect(thermostat.GetCurrentTemp()).toEqual(32);
+    expect(thermostat.getCurrentTemp()).toEqual(32);
   });
 
   it('has default powersaving mode on', function() {
@@ -61,16 +61,16 @@ describe('Thermostat', function() {
 
   it('reset temperature to default', function() {
     thermostat.reset();
-    expect(thermostat.GetCurrentTemp()).toEqual(20);
+    expect(thermostat.getCurrentTemp()).toEqual(20);
   })
 
   it('low usage', function() {
     thermostat.turnPSMOff();
 
     for (var i = 0; i < 3; i++) {
-      thermostat.DownTemp();
+      thermostat.downTemp();
     }
-    expect(thermostat.Usage()).toEqual('Low - Usage');
+    expect(thermostat.usage()).toEqual('Low - Usage');
   });
 
 
@@ -78,9 +78,9 @@ describe('Thermostat', function() {
     thermostat.turnPSMOff();
 
     for (var i = 0; i < 5; i++) {
-      thermostat.UpTemp();
+      thermostat.upTemp();
     }
-    expect(thermostat.Usage()).toEqual('Medium - Usage');
+    expect(thermostat.usage()).toEqual('Medium - Usage');
   });
 
 
@@ -88,11 +88,8 @@ describe('Thermostat', function() {
     thermostat.turnPSMOff();
 
     for (var i = 0; i < 6; i++) {
-      thermostat.UpTemp();
+      thermostat.upTemp();
     }
-    expect(thermostat.Usage()).toEqual('High - Usage');
+    expect(thermostat.usage()).toEqual('High - Usage');
   });
-
-
-
 });
