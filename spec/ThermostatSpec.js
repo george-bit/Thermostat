@@ -12,7 +12,7 @@ describe('Thermostat', function() {
     expect(thermostat.GetCurrentTemp()).toEqual(20);
   });
 
-  it('increment', function() {
+  it('Up', function() {
     thermostat.UpTemp();
     expect(thermostat.GetCurrentTemp()).toEqual(21);
   });
@@ -45,7 +45,7 @@ describe('Thermostat', function() {
     expect(thermostat.GetCurrentTemp()).toEqual(32);
   });
 
-  it('has default powersaving mode', function() {
+  it('has default powersaving mode on', function() {
     expect(thermostat.isPowerSavingModeOn()).toEqual(true);
   })
 
@@ -59,7 +59,7 @@ describe('Thermostat', function() {
     expect(thermostat.isPowerSavingModeOn()).toEqual(true);
   })
 
-  it('reset everything to default', function() {
+  it('reset temperature to default', function() {
     thermostat.reset();
     expect(thermostat.GetCurrentTemp()).toEqual(20);
   })
@@ -77,7 +77,7 @@ describe('Thermostat', function() {
   it('medimum usage', function() {
     thermostat.turnPSMOff();
 
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
       thermostat.UpTemp();
     }
     expect(thermostat.Usage()).toEqual('Medium - Usage');
@@ -87,7 +87,7 @@ describe('Thermostat', function() {
   it('High usage', function() {
     thermostat.turnPSMOff();
 
-    for (var i = 0; i < 7; i++) {
+    for (var i = 0; i < 6; i++) {
       thermostat.UpTemp();
     }
     expect(thermostat.Usage()).toEqual('High - Usage');
