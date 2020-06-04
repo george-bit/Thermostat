@@ -48,12 +48,12 @@ class Thermostat{
     usage(){
 
         if(this.temperature < this.LOW_USAGE_LIMIT){
-            return 'Low - Usage';
+            return 'low-usage';
         }
         if(this.temperature >= this.LOW_USAGE_LIMIT && this.temperature <= this.MAXIMUM_TEMPERATURE_PSM_ON){
-            return 'Medium - Usage';
+            return 'medium-usage';
         }
-        return 'High - Usage';
+        return 'high-usage';
     }
 
 
@@ -64,9 +64,9 @@ class Thermostat{
 
     _isMaxTemperature() {
       if (this.isPowerSavingModeOn() === false){
-        return this.temperature === this.MAXIMUM_TEMPERATURE_PSM_OFF
+        return this.temperature >= this.MAXIMUM_TEMPERATURE_PSM_OFF
       }
-      return this.temperature === this.MAXIMUM_TEMPERATURE_PSM_ON
+      return this.temperature >= this.MAXIMUM_TEMPERATURE_PSM_ON
     }
 
 }
